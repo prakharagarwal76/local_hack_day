@@ -14,6 +14,12 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.Calendar;
 
 public class NewEvent extends AppCompatActivity {
@@ -24,7 +30,7 @@ public class NewEvent extends AppCompatActivity {
     int mYear;
     int mMonth;
     int mDay;
-
+    FirebaseDatabase mDatabase;
     int mHour;
     int mMinute;
 
@@ -33,7 +39,7 @@ public class NewEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_event);
         widgets();
-
+        mDatabase=FirebaseDatabase.getInstance();
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,6 +49,10 @@ public class NewEvent extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(date!=null && location!=null && event!=null) {
+                    DatabaseReference ref1 = mDatabase.getReference().child("events");
+
+                }
 
             }
         });
