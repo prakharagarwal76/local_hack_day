@@ -55,12 +55,13 @@ public class NewEvent extends AppCompatActivity {
                 if (date != null && location != null && event != null) {
                     DatabaseReference ref1 = mDatabase.getReference().child("events");
                     EventItem eventItem = new EventItem();
-                    eventItem.setDate(date.getText().toString());
+                    eventItem.setDate(Integer.parseInt(date.getText().toString()));
                     eventItem.setLocation(location.getText().toString());
                     eventItem.setTitle(event.getText().toString());
                     eventItem.setMonth(month.getText().toString());
-                    eventItem.setYear(year.getText().toString());
+                    eventItem.setYear(Integer.parseInt(year.getText().toString()));
                     eventItem.setSponsor_requirement("Sponsor should provide a quotation on how much they want to sponsor.");
+                    eventItem.setOrganiser_requirement("Organiser should be available throughout the event duration. Should have organised some events before. Is responsible for managing the Attendees at the time of event.");
                     eventItem.setVenue_requirement("Organiser should be available throughout the event duration. Should have organised some events before. Is responsible for managing the Attendees at the time of event.");
                     eventItem.setDescription("Come and enjoy at dance night with DJ Polygon. Complimentary snacks and drinks available. Doors open at 9PM.");
                     eventItem.setVenue_requirement("Provide details about the location, size and capacity of the venue.");
