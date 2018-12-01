@@ -37,9 +37,9 @@ public class EventsFragment extends Fragment {
         eventItemList=new ArrayList<>();
         EventItem eventItem=new EventItem();
         eventItem.setTitle("Dance Night with DJ Polygon");
-        eventItem.setDate("25");
+        eventItem.setDate(25);
         eventItem.setMonth("Feb");
-        eventItem.setYear("2019");
+        eventItem.setYear(2019);
         eventItem.setLocation("Hauz Khas, Delhi");
         eventItem.setDescription("Come and enjoy at dance night with DJ Polygon. Complimentary snacks and drinks available. Doors open at 9PM.");
         eventItem.setImage("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/landscape-green-dance-night-club-event-purple-poster-template-19b1b3d866deade7cff1ce2edfb8dff5_screen.jpg?ts=1456004683");
@@ -60,9 +60,9 @@ public class EventsFragment extends Fragment {
 
         EventItem eventItem2=new EventItem();
         eventItem2.setTitle("Music and Dance Event");
-        eventItem2.setDate("23");
+        eventItem2.setDate(23);
         eventItem2.setMonth("March");
-        eventItem2.setYear("2019");
+        eventItem2.setYear(2019);
         eventItem2.setLocation("Central City Hall, Delhi");
         eventItem2.setDescription("Come and enjoy at the music and dance festival at central city hall. Complimentary snacks and drinks available. Doors open at 6PM.");
         eventItem2.setImage("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/landscape-concert-with-four-4-singer-poster-template-3ea581c32b2bca035d8df33729c67874_screen.jpg?ts=1458598391");
