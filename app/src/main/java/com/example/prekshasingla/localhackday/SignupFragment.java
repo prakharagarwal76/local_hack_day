@@ -1,6 +1,7 @@
 package com.example.prekshasingla.localhackday;
 
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -197,7 +198,9 @@ public class SignupFragment extends Fragment {
 
             SharedPreferenceUtil.getInstance(getActivity()).setLoginId(email);
             SharedPreferenceUtil.getInstance(getActivity()).setType(type);
-            getActivity().onBackPressed();
+            Intent intent=new Intent(getActivity(),MainNav.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            getActivity().startActivity(intent);
 
         }else{
             Toast.makeText(getActivity(), "User exists. Please Enter A Different Email", Toast.LENGTH_SHORT).show();

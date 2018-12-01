@@ -2,6 +2,7 @@ package com.example.prekshasingla.localhackday;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -149,7 +150,10 @@ public class LoginFragment extends Fragment {
             editor.apply();
             emailVerified=false;
             passwordVerified=false;
-            getActivity().onBackPressed();
+            SharedPreferenceUtil.getInstance(getActivity()).setLoginId(email);
+            Intent intent=new Intent(getActivity(),MainNav.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            getActivity().startActivity(intent);
 
         }else{
             dialog.dismiss();
