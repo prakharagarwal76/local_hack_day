@@ -176,6 +176,9 @@ public class LoginFragment extends Fragment {
                     if(child.getKey().equals("type")){
                         SharedPreferenceUtil.getInstance(getActivity()).setType(Integer.parseInt(""+ child.getValue()));
                     }
+                    if(child.getKey().equals("name")){
+                        SharedPreferenceUtil.getInstance(getActivity()).setLoginName(child.getValue()+"");
+                    }
                 }
 
 

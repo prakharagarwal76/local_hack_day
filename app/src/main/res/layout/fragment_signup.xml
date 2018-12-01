@@ -124,28 +124,24 @@
                 android:id="@+id/radio_admin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onRadioButtonClicked"
                 android:text="Admin" />
 
             <RadioButton
                 android:id="@+id/radio_sponsor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onRadioButtonClicked"
                 android:text="Sponsor" />
 
             <RadioButton
                 android:id="@+id/radio_venue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onRadioButtonClicked"
                 android:text="Offer Venue" />
 
             <RadioButton
                 android:id="@+id/radio_organiser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onRadioButtonClicked"
                 android:text="Organiser" />
 
             <RadioButton
@@ -153,7 +149,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:onClick="onRadioButtonClicked"
                 android:text="Attendee" />
 
         </RadioGroup>

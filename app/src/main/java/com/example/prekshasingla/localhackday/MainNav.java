@@ -15,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,6 +33,7 @@ public class MainNav extends AppCompatActivity
     EventsRecyclerAdapter eventsRecyclerAdapter;
     List<EventItem> eventItemList;
     private FirebaseDatabase mDatabase;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,9 @@ public class MainNav extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-
+        progressBar = findViewById(R.id.progress);
+        progressBar.setIndeterminate(true);
+        progressBar.setVisibility(View.VISIBLE);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -48,16 +53,22 @@ public class MainNav extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView name = headerView.findViewById(R.id.name);
+        TextView email = headerView.findViewById(R.id.email);
+
+        name.setText(SharedPreferenceUtil.getInstance(this).getloginName());
+        email.setText(SharedPreferenceUtil.getInstance(this).getloginId());
         navigationView.setNavigationItemSelectedListener(this);
         mDatabase = FirebaseDatabase.getInstance();
 
         getData();
-        eventItemList=new ArrayList<>();
+        eventItemList = new ArrayList<>();
 
-        eventsRecycler=findViewById(R.id.event_recycler);
+        eventsRecycler = findViewById(R.id.event_recycler);
 
 
-        eventsRecyclerAdapter=new EventsRecyclerAdapter(eventItemList, this);
+        eventsRecyclerAdapter = new EventsRecyclerAdapter(eventItemList, this);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         eventsRecycler.setLayoutManager(mLayoutManager);
         eventsRecycler.setAdapter(eventsRecyclerAdapter);
@@ -70,9 +81,10 @@ public class MainNav extends AppCompatActivity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    EventItem item=child.getValue(EventItem.class);
-                        eventItemList.add(item);
+                    EventItem item = child.getValue(EventItem.class);
+                    eventItemList.add(item);
                 }
+                progressBar.setVisibility(View.GONE);
                 eventsRecyclerAdapter.notifyDataSetChanged();
 
             }
@@ -124,7 +136,7 @@ public class MainNav extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            Intent intent=new Intent(MainNav.this,NewEvent.class);
+            Intent intent = new Intent(MainNav.this, NewEvent.class);
             startActivity(intent);
         } else if (id == R.id.nav_gallery) {
 
@@ -132,12 +144,12 @@ public class MainNav extends AppCompatActivity
 
         } else if (id == R.id.nav_manage) {
 
-        }  else if (id == R.id.nav_logout) {
+        } else if (id == R.id.nav_logout) {
             SharedPreferenceUtil.getInstance(this).clear();
-                Intent intent =new Intent(this,LoginSignupActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
+            Intent intent = new Intent(this, LoginSignupActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

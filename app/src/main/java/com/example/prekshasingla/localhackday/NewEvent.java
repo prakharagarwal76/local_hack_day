@@ -69,11 +69,11 @@ public class NewEvent extends AppCompatActivity {
     }
 
     public void widgets() {
-        event = (EditText) findViewById(R.id.event);
+//        event = (EditText) findViewById(R.id.event);
         date = (EditText) findViewById(R.id.date);
         year = (EditText) findViewById(R.id.year);
         month = (EditText) findViewById(R.id.month);
-        location = (EditText) findViewById(R.id.location);
+//        location = (EditText) findViewById(R.id.location);
         save = (Button) findViewById(R.id.button);
         cancel = (Button) findViewById(R.id.button2);
 

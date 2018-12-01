@@ -28,7 +28,7 @@ public class EventDetailActivity extends AppCompatActivity {
 
         Intent intent=getIntent();
         eventName.setText(intent.getStringExtra("title"));
-        eventDate.setText(intent.getStringExtra("date")+" "+intent.getStringExtra("month")+" "+intent.getStringExtra("year"));
+        eventDate.setText(intent.getIntExtra("date",1)+" "+intent.getStringExtra("month")+" "+intent.getIntExtra("year",2018));
         eventDescription.setText(intent.getStringExtra("description"));
         eventLocation.setText(intent.getStringExtra("location"));
         Picasso.with(this)

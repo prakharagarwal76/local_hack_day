@@ -35,6 +35,13 @@ public class SharedPreferenceUtil {
     public String getloginId() {
         return mSharedPreferences.getString("loginId","");
     }
+    public void setLoginName(String value) {
+        mSharedPreferencesEditor.putString("loginName", value);
+        mSharedPreferencesEditor.commit();
+    }
+    public String getloginName() {
+        return mSharedPreferences.getString("loginName","");
+    }
     public int getType() {
         return mSharedPreferences.getInt("loginType", 0);
     }

@@ -7,10 +7,23 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainNav"
     tools:showIn="@layout/app_bar_main_nav">
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/event_recycler" />
     <android.support.v7.widget.RecyclerView
-        android:layout_margin="5dp"
         android:id="@+id/event_recycler"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical" />
 </android.support.constraint.ConstraintLayout>

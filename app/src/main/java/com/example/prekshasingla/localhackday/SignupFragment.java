@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -108,42 +109,74 @@ public class SignupFragment extends Fragment {
             }
         });
         mDatabase = FirebaseDatabase.getInstance();
+
+
+        RadioGroup radioGroup = (RadioGroup) rootView.findViewById(R.id.signup_radio);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                switch (checkedId) {
+                    case R.id.radio_admin:
+
+                            type = 1;
+                        break;
+                    case R.id.radio_sponsor:
+
+                            type = 2;
+                        break;
+                    case R.id.radio_organiser:
+
+                            type = 4;
+                        break;
+                    case R.id.radio_venue:
+
+                            type = 3;
+                        break;
+                    case R.id.radio_attendee:
+
+                            type = 5;
+                        break;
+                }
+            }
+        });
         return rootView;
     }
 
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
-
-        // Check which radio button was clicked
-        switch (view.getId()) {
-            case R.id.radio_admin:
-                if (checked)
-                    // Pirates are the best
-                    type = 1;
-                break;
-            case R.id.radio_sponsor:
-                if (checked)
-                    // Ninjas rule
-                    type = 2;
-                break;
-            case R.id.radio_organiser:
-                if (checked)
-                    // Ninjas rule
-                    type = 4;
-                break;
-            case R.id.radio_venue:
-                if (checked)
-                    // Ninjas rule
-                    type = 3;
-                break;
-            case R.id.radio_attendee:
-                if (checked)
-                    // Ninjas rule
-                    type = 5;
-                break;
-        }
-    }
+//    public void onRadioButtonClicked(View view) {
+//        // Is the button now checked?
+//        boolean checked = ((RadioButton) view).isChecked();
+//
+//        // Check which radio button was clicked
+//        switch (view.getId()) {
+//            case R.id.radio_admin:
+//                if (checked)
+//                    // Pirates are the best
+//                    type = 1;
+//                break;
+//            case R.id.radio_sponsor:
+//                if (checked)
+//                    // Ninjas rule
+//                    type = 2;
+//                break;
+//            case R.id.radio_organiser:
+//                if (checked)
+//                    // Ninjas rule
+//                    type = 4;
+//                break;
+//            case R.id.radio_venue:
+//                if (checked)
+//                    // Ninjas rule
+//                    type = 3;
+//                break;
+//            case R.id.radio_attendee:
+//                if (checked)
+//                    // Ninjas rule
+//                    type = 5;
+//                break;
+//        }
+//    }
 
     private void userSignUpFirebase(final String name, final String email, final String password) {
 
@@ -196,6 +229,8 @@ public class SignupFragment extends Fragment {
 
 
             SharedPreferenceUtil.getInstance(getActivity()).setLoginId(email);
+            SharedPreferenceUtil.getInstance(getActivity()).setLoginName(name);
+
             SharedPreferenceUtil.getInstance(getActivity()).setType(type);
             Intent intent = new Intent(getActivity(), MainNav.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
