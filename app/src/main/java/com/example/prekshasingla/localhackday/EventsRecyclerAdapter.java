@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAdapter.EventsRecyclerAdapterViewHolder> {
@@ -41,15 +43,14 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
     @Override
     public void onBindViewHolder(EventsRecyclerAdapter.EventsRecyclerAdapterViewHolder holder, int position) {
         EventItem item= items.get(position);
-//        Picasso.with(mContext)
-//                .load(item.getImageURL())
-//                .into(holder.imageURL);
-//        holder.name.setText(item.getName());
-//        holder.quantity.setText("Qty: "+item.getQuantity()+"pc");
-//        holder.price.setText("Rs."+item.getPrice()+"/-");
-//        holder.customerName.setText("Customer Name: "+item.getCustomerName());
-//        holder.address.setText("Address: "+item.getAddress());
-//        holder.status.setText("Status: "+item.getStatus());
+
+        Picasso.with(mContext)
+                .load(item.getImage())
+                .into(holder.imageURL);
+        holder.title.setText(item.getTitle());
+        holder.location.setText(item.getLocation());
+        holder.date.setText(item.getDate());
+
     }
 
 
@@ -68,6 +69,7 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
         public TextView title;
         public TextView location;
         public TextView date;
+        public TextView month;
         public TextView details;
 
 
@@ -84,8 +86,25 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
 
         @Override
         public void onClick(View v) {
+            int pos=getAdapterPosition();
             Intent intent=new Intent(mContext,EventDetailActivity.class);
-//            intent.putExtra();
+            intent.putExtra("title",items.get(pos).getTitle());
+            intent.putExtra("location",items.get(pos).getLocation());
+//            intent.putExtra("date",items.get(pos).getDate()+" "+items.get(pos).getMonth()+" "+items.get(pos).getYear());
+
+            intent.putExtra("date",items.get(pos).getDate());
+            intent.putExtra("month",items.get(pos).getMonth());
+            intent.putExtra("year",items.get(pos).getYear());
+            intent.putExtra("location", items.get(pos).getLocation());
+            intent.putExtra("image",items.get(pos).getImage());
+            intent.putExtra("description",items.get(pos).getDescription());
+            intent.putExtra("sponsor",items.get(pos).getSponsor());
+            intent.putExtra("venue",items.get(pos).getVenue());
+            intent.putExtra("organiser",items.get(pos).getOrganiser());
+
+
+
+
             mContext.startActivity(intent);
         }
     }
