@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "544594652619",
+    "firebase_url": "https://local-hack-day-50526.firebaseio.com",
+    "project_id": "local-hack-day-50526",
+    "storage_bucket": "local-hack-day-50526.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:544594652619:android:ba01136a0e2619f4",
+        "android_client_info": {
+          "package_name": "com.example.prekshasingla.localhackday"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "544594652619-0phvndm9ao0rqfkhas669rq4dbbj034r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.prekshasingla.localhackday",
+            "certificate_hash": "6a6e1d95663971f1ba9dee10c8dc9695a605ea89"
+          }
+        },
+        {
+          "client_id": "544594652619-snr7dn4mcs140csfn4fapqgie1f48lnl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbUbybmrUTzwc-3tXBm1iTO6Gj-LeidyU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "544594652619-snr7dn4mcs140csfn4fapqgie1f48lnl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
