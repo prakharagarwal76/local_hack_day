@@ -13,27 +13,31 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
 
 import java.util.Calendar;
 
 public class NewEvent extends AppCompatActivity {
     EditText event, date, location;
     Calendar date1;
-    Button save,cancel;
+    Button save, cancel;
+    String date_time = "";
+    int mYear;
+    int mMonth;
+    int mDay;
 
+    int mHour;
+    int mMinute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_event);
         widgets();
-        showDateTimePicker();
+
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDateTimePicker();
+                datePicker();
             }
         });
         save.setOnClickListener(new View.OnClickListener() {
@@ -57,30 +61,32 @@ public class NewEvent extends AppCompatActivity {
         event = (EditText) findViewById(R.id.event);
         date = (EditText) findViewById(R.id.date);
         location = (EditText) findViewById(R.id.location);
-        save=(Button)findViewById(R.id.button);
-        cancel=(Button)findViewById(R.id.button2);
-
+        save = (Button) findViewById(R.id.button);
+        cancel = (Button) findViewById(R.id.button2);
 
 
     }
 
-    public void showDateTimePicker() {
-        final Calendar currentDate = Calendar.getInstance();
-        date1 = Calendar.getInstance();
-        new DatePickerDialog(getApplicationContext(), new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                date1.set(year, monthOfYear, dayOfMonth);
-                new TimePickerDialog(getApplicationContext(), new TimePickerDialog.OnTimeSetListener() {
+    private void datePicker() {
+
+        // Get Current Date
+        final Calendar c = Calendar.getInstance();
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+
                     @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        date1.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                        date1.set(Calendar.MINUTE, minute);
-                        Log.v("TAG", "The choosen one " + date1.getTime());
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                        date_time = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
+                        //*************Call Time Picker Here ********************
+date.setText(date_time);
                     }
-                }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), false).show();
-            }
-        }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();
+                }, mYear, mMonth, mDay);
+        datePickerDialog.show();
     }
 
 
