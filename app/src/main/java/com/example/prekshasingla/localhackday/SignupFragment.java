@@ -193,6 +193,8 @@ public class SignupFragment extends Fragment {
             user.setType(type);
             ref1.setValue(user);
             dialog.dismiss();
+
+
             SharedPreferenceUtil.getInstance(getActivity()).setLoginId(email);
             SharedPreferenceUtil.getInstance(getActivity()).setType(type);
             Intent intent = new Intent(getActivity(), MainNav.class);
