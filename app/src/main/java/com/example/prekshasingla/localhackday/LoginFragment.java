@@ -86,13 +86,13 @@ public class LoginFragment extends Fragment {
             }
         });
 
-//        rootview.findViewById(R.id.signup_text).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                getActivity().getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.login_activity_container,new SignUpFragment()).commit();
-//            }
-//        });
+        rootview.findViewById(R.id.signup_text).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.login_activity_container,new SignupFragment()).commit();
+            }
+        });
 
         return rootview;
     }

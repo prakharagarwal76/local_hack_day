@@ -28,8 +28,13 @@ public class SharedPreferenceUtil {
         mSharedPreferencesEditor.putInt("loginType", value);
         mSharedPreferencesEditor.commit();
     }
-
-
+    public void setLoginId(String value) {
+        mSharedPreferencesEditor.putString("loginId", value);
+        mSharedPreferencesEditor.commit();
+    }
+    public String getloginId() {
+        return mSharedPreferences.getString("loginId","");
+    }
     public int getType() {
         return mSharedPreferences.getInt("loginType", 0);
     }
