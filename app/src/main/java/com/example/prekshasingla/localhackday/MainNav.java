@@ -70,8 +70,9 @@ public class MainNav extends AppCompatActivity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    EventItem item=child.getValue(EventItem.class);
-                        eventItemList.add(item);
+//                    EventItem item=child.getValue(EventItem.class);
+                       ///
+                    // eventItemList.add(item);
                 }
                 eventsRecyclerAdapter.notifyDataSetChanged();
 
