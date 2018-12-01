@@ -75,9 +75,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="144dp"
-        android:layout_marginTop="248dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        android:layout_marginTop="253dp"
+        android:inputType="textPersonName"
+        android:maxLength="3" />
 
     <Button
         android:id="@+id/button"

@@ -3,9 +3,9 @@ package com.example.prekshasingla.localhackday;
 public class EventItem {
     String title;
     String image;
-    String date;
+    int date;
     String month;
-    String year;
+    int year;
     String location;
     String description;
 
@@ -45,11 +45,11 @@ public class EventItem {
         this.month = month;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(String year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
@@ -71,11 +71,11 @@ public class EventItem {
         this.image = image;
     }
 
-    public String getDate() {
+    public int getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(int date) {
         this.date = date;
     }
 
