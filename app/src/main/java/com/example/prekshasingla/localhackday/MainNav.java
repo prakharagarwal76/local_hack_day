@@ -83,6 +83,9 @@ public class MainNav extends AppCompatActivity
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     EventItem item = child.getValue(EventItem.class);
                     eventItemList.add(item);
+//                    EventItem item=child.getValue(EventItem.class);
+                       ///
+                    // eventItemList.add(item);
                 }
                 progressBar.setVisibility(View.GONE);
                 eventsRecyclerAdapter.notifyDataSetChanged();

@@ -48,9 +48,9 @@ public class EventsFragment extends Fragment {
 
         EventItem eventItem1=new EventItem();
         eventItem1.setTitle("Winter Solstice Lantern Festival");
-        eventItem1.setDate(21);
+        eventItem1.setDate("21");
         eventItem1.setMonth("Dec");
-        eventItem1.setYear(2018);
+        eventItem1.setYear("2018");
         eventItem1.setLocation("INA, Delhi");
         eventItem1.setDescription("Come and enjoy at 20th Annual Winter Solstice Lantern Festival. Complimentary snacks and drinks available. Live music also available.");
         eventItem1.setImage("https://ktnguyen89.files.wordpress.com/2014/08/ws-event-poster-2013.jpg");

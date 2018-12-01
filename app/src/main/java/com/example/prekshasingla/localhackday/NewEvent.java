@@ -23,8 +23,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Calendar;
 
 public class NewEvent extends AppCompatActivity {
-    EditText event, date, location,year,month;
+    EditText event, date, location, year, month;
     Calendar date1;
+    int date12;
     Button save, cancel;
     String date_time = "";
     int mYear;
@@ -39,7 +40,8 @@ public class NewEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_event);
         widgets();
-        mDatabase=FirebaseDatabase.getInstance();
+
+        mDatabase = FirebaseDatabase.getInstance();
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,8 +51,20 @@ public class NewEvent extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(date!=null && location!=null && event!=null) {
-                    DatabaseReference ref1 = mDatabase.getReference().child("events");
+                if (date != null && location != null && event != null) {
+                    DatabaseReference ref1 = mDatabase.getReference().child("eventsit");
+                    EventItem eventItem = new EventItem();
+                    eventItem.setDate(date.getText().toString());
+                    eventItem.setLocation(location.getText().toString());
+                    eventItem.setTitle(event.getText().toString());
+                    eventItem.setMonth(month.getText().toString());
+                    eventItem.setYear(year.getText().toString());
+                    eventItem.setSponsor_requirement("Sponsor should provide a quotation on how much they want to sponsor.");
+                    eventItem.setVenue_requirement("Organiser should be available throughout the event duration. Should have organised some events before. Is responsible for managing the Attendees at the time of event.");
+                    eventItem.setDescription("Come and enjoy at dance night with DJ Polygon. Complimentary snacks and drinks available. Doors open at 9PM.");
+                    eventItem.setVenue_requirement("Provide details about the location, size and capacity of the venue.");
+                    eventItem.setImage("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/landscape-green-dance-night-club-event-purple-poster-template-19b1b3d866deade7cff1ce2edfb8dff5_screen.jpg?ts=1456004683");
+                    ref1.push().setValue(eventItem);
 
                 }
 
@@ -79,9 +93,6 @@ public class NewEvent extends AppCompatActivity {
 
 
     }
-
-
-
 
 
 }

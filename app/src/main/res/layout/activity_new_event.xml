@@ -6,9 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".NewEvent">
 
+    <LinearLayout
+        android:id="@+id/top_heading"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_nav"
+        android:orientation="vertical">
 
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Add Event"
+            android:textColor="@color/colorPrimary"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+    </LinearLayout>
     <EditText
-        android:id="@+id/editText12"
+        android:id="@+id/event"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -19,7 +36,7 @@
         android:hint="Title" />
 
     <EditText
-        android:id="@+id/editText13"
+        android:id="@+id/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -35,8 +52,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="245dp"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="251dp"
         android:ems="10"
         android:inputType="textPersonName" />
 
@@ -44,10 +61,10 @@
         android:id="@+id/year"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText13"
+        android:layout_below="@+id/location"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="62dp"
-        android:layout_marginEnd="152dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="112dp"
         android:ems="10"
         android:inputType="textPersonName" />
 
@@ -57,25 +74,29 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="106dp"
-        android:layout_marginTop="245dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="248dp"
         android:ems="10"
         android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/button"
+        android:background="@drawable/round_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/month"
+        android:textColor="@color/white"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="102dp"
         android:text="SAVE" />
 
     <Button
         android:id="@+id/button2"
+        android:background="@drawable/round_btn"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editText12"
+        android:layout_alignEnd="@+id/location"
         android:layout_alignBottom="@+id/button"
         android:text="CLEAR" />
 </RelativeLayout>
