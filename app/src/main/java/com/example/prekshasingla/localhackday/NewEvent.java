@@ -40,12 +40,8 @@ public class NewEvent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_event);
-        date = (EditText) findViewById(R.id.date);
-        year = (EditText) findViewById(R.id.year);
-        month = (EditText) findViewById(R.id.month);
-//        location = (EditText) findViewById(R.id.location);
-        save = (Button) findViewById(R.id.button);
-        cancel = (Button) findViewById(R.id.button2);
+        widgets();
+
         mDatabase = FirebaseDatabase.getInstance();
         date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,22 +52,23 @@ public class NewEvent extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if (!date.getText().toString().equals("") && !location.getText().toString().equals("") && !event.getText().toString().equals("")) {
+                if (date != null && location != null && event != null) {
                     DatabaseReference ref1 = mDatabase.getReference().child("events");
                     EventItem eventItem = new EventItem();
-                    eventItem.setDate(Integer.parseInt(date.getText().toString()));
+                    eventItem.setDate(date.getText().toString());
                     eventItem.setLocation(location.getText().toString());
                     eventItem.setTitle(event.getText().toString());
                     eventItem.setMonth(month.getText().toString());
-                    eventItem.setYear(Integer.parseInt(year.getText().toString()));
+                    eventItem.setYear(year.getText().toString());
                     eventItem.setSponsor_requirement("Sponsor should provide a quotation on how much they want to sponsor.");
                     eventItem.setVenue_requirement("Organiser should be available throughout the event duration. Should have organised some events before. Is responsible for managing the Attendees at the time of event.");
                     eventItem.setDescription("Come and enjoy at dance night with DJ Polygon. Complimentary snacks and drinks available. Doors open at 9PM.");
                     eventItem.setVenue_requirement("Provide details about the location, size and capacity of the venue.");
                     eventItem.setImage("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/landscape-green-dance-night-club-event-purple-poster-template-19b1b3d866deade7cff1ce2edfb8dff5_screen.jpg?ts=1456004683");
                     ref1.push().setValue(eventItem);
-                    Toast.makeText(NewEvent.this, "Succuessfully Added", Toast.LENGTH_SHORT).show();
-//                }
+                    Toast.makeText(getApplicationContext(),"DATA SAVED",Toast.LENGTH_LONG).show();
+
+                }
 
             }
         });
@@ -81,6 +78,8 @@ public class NewEvent extends AppCompatActivity {
                 event.setText("");
                 date.setText("");
                 location.setText("");
+                month.setText("");
+                year.setText("");
 
 
             }
@@ -88,11 +87,11 @@ public class NewEvent extends AppCompatActivity {
     }
 
     public void widgets() {
-//        event = (EditText) findViewById(R.id.event);
+        event = (EditText) findViewById(R.id.event);
         date = (EditText) findViewById(R.id.date);
         year = (EditText) findViewById(R.id.year);
         month = (EditText) findViewById(R.id.month);
-//        location = (EditText) findViewById(R.id.location);
+        location = (EditText) findViewById(R.id.location);
         save = (Button) findViewById(R.id.button);
         cancel = (Button) findViewById(R.id.button2);
 

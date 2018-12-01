@@ -53,8 +53,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="82dp"
-        android:layout_marginTop="251dp"
-        android:ems="10"
+        android:layout_marginTop="246dp"
+        android:maxLength="3"
+android:hint="dd"
         android:inputType="textPersonName" />
 
     <EditText
@@ -66,18 +67,21 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="112dp"
         android:ems="10"
+        android:maxLength="4"
+        android:hint="yyyy"
         android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/month"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="253dp"
-        android:inputType="textPersonName"
-        android:maxLength="3" />
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="244dp"
+        android:layout_toEndOf="@+id/date"
+       android:maxLines="3"
+        android:hint="mm"
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/button"
@@ -99,4 +103,17 @@
         android:layout_alignEnd="@+id/location"
         android:layout_alignBottom="@+id/button"
         android:text="CLEAR" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/month"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="207dp"
+        android:layout_marginEnd="-26dp"
+        android:gravity="center"
+        android:text="ADD DATE "
+        android:textColor="#000000"
+        android:textSize="20sp" />
 </RelativeLayout>
