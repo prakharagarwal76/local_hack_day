@@ -49,7 +49,7 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
                 .into(holder.imageURL);
         holder.title.setText(item.getTitle());
         holder.location.setText(item.getLocation());
-        holder.date.setText(item.getDate());
+        holder.date.setText(""+item.getDate());
 
     }
 
@@ -98,9 +98,9 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
             intent.putExtra("location", items.get(pos).getLocation());
             intent.putExtra("image",items.get(pos).getImage());
             intent.putExtra("description",items.get(pos).getDescription());
-            intent.putExtra("sponsor",items.get(pos).getSponsor());
-            intent.putExtra("venue",items.get(pos).getVenue());
-            intent.putExtra("organiser",items.get(pos).getOrganiser());
+            intent.putExtra("sponsor",items.get(pos).getSponsor_requirement());
+            intent.putExtra("venue",items.get(pos).getVenue_requirement());
+            intent.putExtra("organiser",items.get(pos).getOrganiser_requirement());
 
 
 

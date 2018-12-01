@@ -35,13 +35,60 @@ public class EventDetailActivity extends AppCompatActivity {
                 .load(intent.getStringExtra("image"))
                 .into(imageView);
 
+        if(SharedPreferenceUtil.getInstance(this).getType()==5)
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(EventDetailActivity.this, "Successfully registered for event", Toast.LENGTH_SHORT).show();
-
             }
         });
+        else
+        if(SharedPreferenceUtil.getInstance(this).getType()==1)
+        {
+            button.setText("Close Event");
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(EventDetailActivity.this, "Event has been closed", Toast.LENGTH_SHORT).show();
 
+                }
+            });
+        }
+        else
+        if(SharedPreferenceUtil.getInstance(this).getType()==2)
+        {
+            button.setText("Sponsor Event");
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(EventDetailActivity.this, "Your request has been sent to admin", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+        }
+        else
+        if(SharedPreferenceUtil.getInstance(this).getType()==3)
+        {
+            button.setText("Offer Venue");
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(EventDetailActivity.this, "Your request has been sent to admin", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+        }
+        else
+        if(SharedPreferenceUtil.getInstance(this).getType()==4)
+        {
+            button.setText("Become Organiser");
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(EventDetailActivity.this, "Your request has been sent to admin", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+        }
     }
 }

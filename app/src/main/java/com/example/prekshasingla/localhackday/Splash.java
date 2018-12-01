@@ -22,9 +22,14 @@ public class Splash extends AppCompatActivity {
             public void run() {
                 // This method will be executed once the timer is over
                 // Start your app main activity
-                Intent i = new Intent(Splash.this, LoginSignupActivity.class);
-                startActivity(i);
-
+                if(SharedPreferenceUtil.getInstance(Splash.this).getloginId().equals("")) {
+                    Intent i = new Intent(Splash.this, LoginSignupActivity.class);
+                    startActivity(i);
+                }else
+                {
+                    Intent i = new Intent(Splash.this, MainNav.class);
+                    startActivity(i);
+                }
                 // close this activity
                 finish();
             }

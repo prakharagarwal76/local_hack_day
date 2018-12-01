@@ -95,6 +95,7 @@ public class LoginFragment extends Fragment {
             }
         });
 
+
         return rootview;
     }
     private void userLoginFirebase(final String email, final String password) {

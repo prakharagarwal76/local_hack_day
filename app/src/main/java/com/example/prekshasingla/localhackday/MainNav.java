@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,8 +16,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainNav extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    RecyclerView eventsRecycler;
+    EventsRecyclerAdapter eventsRecyclerAdapter;
+    List<EventItem> eventItemList;
+    private FirebaseDatabase mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +49,40 @@ public class MainNav extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        mDatabase = FirebaseDatabase.getInstance();
+
+        getData();
+        eventItemList=new ArrayList<>();
+
+        eventsRecycler=findViewById(R.id.event_recycler);
+
+
+        eventsRecyclerAdapter=new EventsRecyclerAdapter(eventItemList, this);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        eventsRecycler.setLayoutManager(mLayoutManager);
+        eventsRecycler.setAdapter(eventsRecyclerAdapter);
+    }
+
+    private void getData() {
+        DatabaseReference ref = mDatabase.getReference().child("events");
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    EventItem item=child.getValue(EventItem.class);
+                        eventItemList.add(item);
+                }
+                eventsRecyclerAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     @Override
@@ -83,10 +132,12 @@ public class MainNav extends AppCompatActivity
 
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        }  else if (id == R.id.nav_logout) {
+            SharedPreferenceUtil.getInstance(this).clear();
+                Intent intent =new Intent(this,LoginSignupActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

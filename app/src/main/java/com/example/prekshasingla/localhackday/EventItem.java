@@ -3,10 +3,39 @@ package com.example.prekshasingla.localhackday;
 public class EventItem {
     String title;
     String image;
-    String date;
+    double date;
     String month;
-    String year;
+    double year;
     String location;
+    String description;
+
+    public String getOrganiser_requirement() {
+        return organiser_requirement;
+    }
+
+    public void setOrganiser_requirement(String organiser_requirement) {
+        this.organiser_requirement = organiser_requirement;
+    }
+
+    public String getSponsor_requirement() {
+        return sponsor_requirement;
+    }
+
+    public void setSponsor_requirement(String sponsor_requirement) {
+        this.sponsor_requirement = sponsor_requirement;
+    }
+
+    public String getVenue_requirement() {
+        return venue_requirement;
+    }
+
+    public void setVenue_requirement(String venue_requirement) {
+        this.venue_requirement = venue_requirement;
+    }
+
+    String organiser_requirement;
+    String sponsor_requirement;
+    String venue_requirement;
 
     public String getMonth() {
         return month;
@@ -16,16 +45,15 @@ public class EventItem {
         this.month = month;
     }
 
-    public String getYear() {
+    public double getYear() {
         return year;
     }
 
-    public void setYear(String year) {
+    public void setYear(double year) {
         this.year = year;
     }
 
-    String description;
-    String sponsor;
+
 
     public String getTitle() {
         return title;
@@ -43,11 +71,11 @@ public class EventItem {
         this.image = image;
     }
 
-    public String getDate() {
+    public double getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(double date) {
         this.date = date;
     }
 
@@ -67,30 +95,7 @@ public class EventItem {
         this.description = description;
     }
 
-    public String getSponsor() {
-        return sponsor;
-    }
 
-    public void setSponsor(String sponsor) {
-        this.sponsor = sponsor;
-    }
 
-    public String getVenue() {
-        return venue;
-    }
 
-    public void setVenue(String venue) {
-        this.venue = venue;
-    }
-
-    public String getOrganiser() {
-        return organiser;
-    }
-
-    public void setOrganiser(String organiser) {
-        this.organiser = organiser;
-    }
-
-    String venue;
-    String organiser;
 }
