@@ -12,6 +12,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 
 import com.google.firebase.database.DataSnapshot;
@@ -52,7 +53,7 @@ public class NewEvent extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (date != null && location != null && event != null) {
-                    DatabaseReference ref1 = mDatabase.getReference().child("eventsit");
+                    DatabaseReference ref1 = mDatabase.getReference().child("events");
                     EventItem eventItem = new EventItem();
                     eventItem.setDate(date.getText().toString());
                     eventItem.setLocation(location.getText().toString());
@@ -65,6 +66,7 @@ public class NewEvent extends AppCompatActivity {
                     eventItem.setVenue_requirement("Provide details about the location, size and capacity of the venue.");
                     eventItem.setImage("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/landscape-green-dance-night-club-event-purple-poster-template-19b1b3d866deade7cff1ce2edfb8dff5_screen.jpg?ts=1456004683");
                     ref1.push().setValue(eventItem);
+                    Toast.makeText(getApplicationContext(),"DATA SAVED",Toast.LENGTH_LONG).show();
 
                 }
 
@@ -76,6 +78,8 @@ public class NewEvent extends AppCompatActivity {
                 event.setText("");
                 date.setText("");
                 location.setText("");
+                month.setText("");
+                year.setText("");
 
 
             }
